@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        .form-container, .payment-container {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        button {
+            width: 48%;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button#buyButton {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        button#enterCodeButton {
+            background-color: #3498db;
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        .payment-container {
+            display: none;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #777;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Welcome to Our Landing Page</h1>
+
+    <div class="form-container">
+        <label for="voucherCode">Enter Voucher Code:</label>
+        <input type="text" id="voucherCode" placeholder="Enter your voucher code">
+
+        <label for="timeAndPrice">Select Time and Price:</label>
+        <select id="timeAndPrice">
+            <option value="10">1 Jam - Rp.3.000</option>
+            <option value="15">3 Jam - Rp.7.500</option>
+            <option value="20">7 Jam - Rp.15.000</option>
+        </select>
+
+        <div class="button-container">
+            <button id="enterCodeButton" onclick="enterCode()">Enter Code</button>
+            <button id="buyButton" onclick="buyVoucher()">Buy Voucher</button>
+        </div>
+    </div>
+
+    <div class="payment-container">
+        <h2>Payment Details</h2>
+        <p id="selectedTimeAndPrice"></p>
+
+        <label for="paymentMethod">Select Payment Method:</label>
+        <select id="paymentMethod">
+            <option value="online">Pay Online</option>
+            <option value="cash">Pay Cash</option>
+        </select>
+
+        <button onclick="completePayment()">Complete Payment</button>
+    </div>
+</div>
+
+<script>
+    function enterCode() {
+        var voucherCode = document.getElementById('voucherCode').value;
+        alert(`Code entered successfully! You can now access the WiFi.`);
+    }
+
+    function buyVoucher() {
+        var timeAndPrice = document.getElementById('timeAndPrice');
+        var selectedTimeAndPrice = timeAndPrice.options[timeAndPrice.selectedIndex].text;
+
+        document.getElementById('selectedTimeAndPrice').innerText = `Selected Time and Price: ${selectedTimeAndPrice}`;
+        document.querySelector('.form-container').style.display = 'none';
+        document.querySelector('.payment-container').style.display = 'block';
+    }
+
+    function completePayment() {
+        var paymentMethod = document.getElementById('paymentMethod').value;
+        alert(`Payment Successful! Method: ${paymentMethod}`);
+    }
+</script>
+
+</body>
+</html>
